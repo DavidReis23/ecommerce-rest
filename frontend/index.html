@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Roupas e Tênis</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+    <div class="header-content">
+        <img src="imagens/image.png" alt="Logo DRL PureStyle" class="logo">
+        <div class="header-text">
+            <h1>DRL PureStyle</h1>
+            <p>As melhores marcas com os melhores preços</p>
+        </div>
+    </div>
+</header>
+
+    
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="#" class="nav-link active">Início</a>
+            <a href="#" class="nav-link">Roupas</a>
+            <a href="#" class="nav-link">Tênis</a>
+            <a href="#" class="nav-link">Marcas</a>
+            <a href="#" class="nav-link">Ofertas</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <aside class="filters">
+            <h3>Filtrar Produtos</h3>
+            <div class="filter-group">
+                <h4>Categorias</h4>
+                <label><input type="checkbox" name="category" value="camisetas"> Camisetas</label>
+                <label><input type="checkbox" name="category" value="calcas"> Calças</label>
+                <label><input type="checkbox" name="category" value="tenis"> Tênis</label>
+                <label><input type="checkbox" name="category" value="acessorios"> Acessórios</label>
+            </div>
+            
+            <div class="filter-group">
+                <h4>Faixa de Preço</h4>
+                <label><input type="radio" name="price" value="0-50"> Até R$ 50</label>
+                <label><input type="radio" name="price" value="50-100"> R$ 50 - R$ 100</label>
+                <label><input type="radio" name="price" value="100-200"> R$ 100 - R$ 200</label>
+                <label><input type="radio" name="price" value="200+"> Acima de R$ 200</label>
+            </div>
+            
+            <button class="btn filter-btn">Aplicar Filtros</button>
+        </aside>
+        
+        <main class="main-content">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar produtos..." id="search-input">
+                <button class="btn search-btn">Buscar</button>
+            </div>
+            
+            <h2>Nossos Produtos</h2>
+            <div class="produtos-grid" id="produtos-container">
+                <!-- Produtos serão carregados aqui via JavaScript -->
+            </div>
+        </main>
+    </div>
+    
+    <div class="carrinho-btn" id="carrinho-btn">
+        <span>🛒</span>
+        <span class="carrinho-count" id="carrinho-count">0</span>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 DRL PureStyle. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
