@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Minha Loja</h1>
+        </header>
+
+        <div id="login-section">
+            <h2 class="text-2xl font-semibold text-center mb-4 text-gray-700">Login</h2>
+            <form id="login-form" class="space-y-4">
+                <input type="email" id="login-email" placeholder="E-mail" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" id="login-senha" placeholder="Senha" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Entrar</button>
+            </form>
+            <p class="mt-4 text-center text-gray-600">
+                Não tem uma conta? <a href="#" id="show-register" class="text-blue-600 hover:underline">Cadastre-se</a>
+            </p>
+        </div>
+
+        <div id="register-section" style="display: none;">
+            <h2 class="text-2xl font-semibold text-center mb-4 text-gray-700">Cadastre-se</h2>
+            <form id="register-form" class="space-y-4">
+                <input type="text" id="register-nome" placeholder="Nome completo" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" id="register-email" placeholder="E-mail" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" id="register-senha" placeholder="Senha" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">Cadastrar</button>
+            </form>
+            <p class="mt-4 text-center text-gray-600">
+                Já tem uma conta? <a href="#" id="show-login" class="text-blue-600 hover:underline">Faça o login</a>
+            </p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

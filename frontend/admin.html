@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja - Adicionar Produto</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adicionar Novo Produto</h1>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <form id="add-produto-form">
+                <input type="text" id="nome-produto" placeholder="Nome do Produto" required>
+                <textarea id="descricao-produto" placeholder="Descrição do Produto"></textarea>
+                <input type="number" id="preco-produto" placeholder="Preço (ex: 99.90)" step="0.01" required>
+                <input type="text" id="categoria-produto" placeholder="Categoria (ex: Roupa, Calçado)">
+                <input type="text" id="imagem-url-produto" placeholder="URL da Imagem">
+                <button type="submit">Adicionar Produto</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

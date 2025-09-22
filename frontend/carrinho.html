@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Carrinho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .produto-card img {
+            height: 100px;
+            width: 100px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <header class="bg-blue-600 p-4 shadow-md">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="index.html" class="text-white text-2xl font-bold">Minha Loja Online</a>
+        </div>
+    </header>
+    <main class="container mx-auto mt-8 p-4">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Meu Carrinho</h2>
+        <div id="carrinho-container" class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Os itens do carrinho serão exibidos aqui -->
+        </div>
+        <div class="mt-8 text-right">
+            <h3 class="text-xl font-bold">Total: R$ <span id="total-carrinho">0.00</span></h3>
+            <button class="bg-green-600 text-white font-semibold py-3 px-6 rounded-lg mt-4 hover:bg-green-700 transition-colors">Finalizar Compra</button>
+        </div>
+    </main>
+    <script src="carrinho.js"></script>
+</body>
+</html>
