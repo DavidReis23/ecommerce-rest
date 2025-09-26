@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja Online</title>
+    <title>DRL PureStyle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -15,9 +15,18 @@
 <body class="bg-gray-100">
     <!-- Barra de Navegação -->
     <header class="bg-blue-600 p-4 shadow-md">
-        <div class="container mx-auto flex items-center justify-between">
-            <a href="index.html" class="text-white text-2xl font-bold">Minha Loja Online</a>
-            <a href="carrinho.html" class="flex items-center text-white text-lg hover:underline transition-colors">
+        <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between">
+            <a href="index.html" class="text-white text-2xl font-bold mb-4 sm:mb-0">DRL PureStyle</a>
+            
+            <!-- Barra de Pesquisa -->
+            <div class="relative w-full max-w-lg mx-4">
+                <input type="text" id="search-input" placeholder="Pesquisar produtos..." class="bg-white text-gray-800 rounded-full py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+
+            <a href="carrinho.html" class="flex items-center text-white text-lg hover:underline transition-colors mt-4 sm:mt-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l1.6-7H6.5a1 1 0 00-.9.59L3.72 17.29A2 2 0 004 20h14a2 2 0 002-2V7a2 2 0 00-2-2H8l-1.38-5.5a1 1 0 00-.99-.5H3a1 1 0 00-1 1v12a1 1 0 001 1h16a1 1 0 001-1V7a1 1 0 00-1-1h-6.5a1 1 0 00-.99-.5z" />
                 </svg>

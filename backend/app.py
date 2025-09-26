@@ -32,7 +32,7 @@ def listar_produtos():
     if conn is None:
         return jsonify({'erro': 'Erro de conexão com o banco de dados'}), 500
     cur = conn.cursor()
-    cur.execute('SELECT id, nome, descricao, preco, categoria, imagem_url FROM produtos;')
+    cur.execute('SELECT id, nome, descricao, preco, categoria, imagem_url, estoque FROM produtos;')
     produtos = cur.fetchall()
     cur.close()
     conn.close()
@@ -44,7 +44,8 @@ def listar_produtos():
             'descricao': produto[2],
             'preco': str(produto[3]),
             'categoria': produto[4],
-            'imagem_url': produto[5]
+            'imagem_url': produto[5],
+            'estoque': produto[6]
         })
     return jsonify(lista_produtos)
 
@@ -59,8 +60,8 @@ def adicionar_produto():
     cur = conn.cursor()
     try:
         cur.execute(
-            'INSERT INTO produtos (nome, descricao, preco, categoria, imagem_url) VALUES (%s, %s, %s, %s, %s) RETURNING id;',
-            (novo_produto['nome'], novo_produto.get('descricao'), novo_produto['preco'], novo_produto.get('categoria'), novo_produto.get('imagem_url'))
+            'INSERT INTO produtos (nome, descricao, preco, categoria, imagem_url, estoque) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id;',
+            (novo_produto['nome'], novo_produto.get('descricao'), novo_produto['preco'], novo_produto.get('categoria'), novo_produto.get('imagem_url'), novo_produto.get('estoque', 0))
         )
         produto_id = cur.fetchone()[0]
         conn.commit()
@@ -112,6 +113,9 @@ def atualizar_produto(id):
         if 'imagem_url' in dados_atualizados:
             sets.append("imagem_url = %s")
             valores.append(dados_atualizados['imagem_url'])
+        if 'estoque' in dados_atualizados:
+            sets.append("estoque = %s")
+            valores.append(dados_atualizados['estoque'])
         if not sets:
             return jsonify({'erro': 'Nenhum campo para atualizar'}), 400
         valores.append(id)
@@ -128,6 +132,43 @@ def atualizar_produto(id):
     if produto_atualizado is None:
         return jsonify({'erro': 'Produto não encontrado'}), 404
     return jsonify({'mensagem': 'Produto atualizado com sucesso!'}), 200
+
+@app.route('/finalizar_compra', methods=['POST'])
+def finalizar_compra():
+    dados = request.get_json()
+    itens_compra = dados.get('itens_compra')
+    
+    if not itens_compra:
+        return jsonify({'erro': 'Carrinho está vazio'}), 400
+    
+    conn = get_db_connection()
+    if conn is None:
+        return jsonify({'erro': 'Erro de conexão com o banco de dados'}), 500
+    cur = conn.cursor()
+    
+    try:
+        for item in itens_compra:
+            produto_id = item.get('id')
+            quantidade_comprada = item.get('quantidade')
+            cur.execute("SELECT estoque FROM produtos WHERE id = %s FOR UPDATE;", (produto_id,))
+            resultado = cur.fetchone()
+            
+            if not resultado or resultado[0] < quantidade_comprada:
+                conn.rollback()
+                return jsonify({'erro': f'Estoque insuficiente para o produto com ID {produto_id}'}), 400
+            
+            novo_estoque = resultado[0] - quantidade_comprada
+            cur.execute("UPDATE produtos SET estoque = %s WHERE id = %s;", (novo_estoque, produto_id))
+        
+        conn.commit()
+        return jsonify({'mensagem': 'Compra finalizada com sucesso e estoque atualizado'}), 200
+        
+    except (psycopg2.Error, KeyError) as e:
+        conn.rollback()
+        return jsonify({'erro': f'Erro ao finalizar a compra: {str(e)}'}), 500
+    finally:
+        cur.close()
+        conn.close()
 
 # Rotas de Autenticação
 @app.route('/register', methods=['POST'])

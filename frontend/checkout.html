@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Barra de Navegação -->
+    <header class="bg-blue-600 p-4 shadow-md">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="index.html" class="text-white text-2xl font-bold">DRL PureStyle</a>
+            <a href="carrinho.html" class="flex items-center text-white text-lg hover:underline transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Voltar ao Carrinho
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Finalizar Compra</h2>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Informações de Envio</h3>
+            <form id="shipping-form" class="mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="nome" placeholder="Nome Completo" class="border p-2 rounded w-full" required>
+                    <input type="email" id="email" placeholder="E-mail" class="border p-2 rounded w-full" required>
+                    <input type="text" id="endereco" placeholder="Endereço Completo" class="border p-2 rounded col-span-full" required>
+                    <input type="text" id="cidade" placeholder="Cidade" class="border p-2 rounded" required>
+                    <input type="text" id="estado" placeholder="Estado" class="border p-2 rounded" required>
+                    <input type="text" id="cep" placeholder="CEP" class="border p-2 rounded col-span-full" required>
+                </div>
+            </form>
+
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Forma de Pagamento</h3>
+            <div id="payment-methods" class="flex flex-col space-y-4">
+                <label class="payment-option border rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100 transition-colors">
+                    <input type="radio" name="payment-method" value="cartao" class="mr-4" checked>
+                    <div class="flex-1">
+                        <span class="font-semibold">Cartão de Crédito</span>
+                        <div id="cartao-form" class="mt-2 space-y-2">
+                            <input type="text" placeholder="Número do Cartão" class="border p-2 rounded w-full">
+                            <input type="text" placeholder="Nome no Cartão" class="border p-2 rounded w-full">
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="Validade (MM/AA)" class="border p-2 rounded w-1/2">
+                                <input type="text" placeholder="CVV" class="border p-2 rounded w-1/2">
+                            </div>
+                            <select id="parcelas" class="border p-2 rounded w-full">
+                                <option value="1">1x sem juros</option>
+                                <option value="2">2x sem juros</option>
+                                <option value="3">3x sem juros</option>
+                                <option value="4">4x</option>
+                            </select>
+                        </div>
+                    </div>
+                </label>
+                
+                <label class="payment-option border rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100 transition-colors">
+                    <input type="radio" name="payment-method" value="pix" class="mr-4">
+                    <div class="flex-1">
+                        <span class="font-semibold">PIX</span>
+                        <div id="pix-info" class="mt-2 hidden">
+                            <p class="text-sm text-gray-600">Copie o código abaixo e pague no seu aplicativo de banco.</p>
+                            <img src="QRCode.png" alt="QR Code PIX" class="mt-2">
+                        </div>
+                    </div>
+                </label>
+                
+                <label class="payment-option border rounded-lg p-4 flex items-center cursor-pointer hover:bg-gray-100 transition-colors">
+                    <input type="radio" name="payment-method" value="boleto" class="mr-4">
+                    <div class="flex-1">
+                        <span class="font-semibold">Boleto</span>
+                        <div id="boleto-info" class="mt-2 hidden">
+                            <p class="text-sm text-gray-600">O boleto será gerado ao finalizar a compra. Pague em qualquer agência bancária ou lotérica.</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            
+            <button id="confirm-purchase-btn" class="mt-8 bg-green-500 text-white font-bold py-3 px-6 rounded-lg w-full hover:bg-green-600 transition-colors">
+                Confirmar Pagamento
+            </button>
+        </div>
+    </main>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

@@ -7,20 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const nome = document.getElementById('nome-produto').value;
         const descricao = document.getElementById('descricao-produto').value;
         const preco = document.getElementById('preco-produto').value;
+        const estoque = document.getElementById('estoque-produto').value; // CAMPO DE ESTOQUE LIDO
         const categoria = document.getElementById('categoria-produto').value;
         const imagem_url = document.getElementById('imagem-url-produto').value;
         
-        // Converte o preço para um número, garantindo que o tipo esteja correto para a API
+        // Converte o preço e o estoque para o tipo correto (número)
         const produtoData = {
             nome: nome,
             descricao: descricao,
             preco: parseFloat(preco),
+            estoque: parseInt(estoque, 10), // GARANTINDO QUE É UM NÚMERO INTEIRO
             categoria: categoria,
             imagem_url: imagem_url
         };
         
         try {
-            const response = await fetch('http://127.0.0.1:5000/produtos', { // URL corrigida
+            const response = await fetch('http://127.0.0.1:5000/produtos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
