@@ -60,24 +60,24 @@ O projeto simula uma loja de **roupas e tênis**, com autenticação de usuário
 # Windows
 -venv\Scripts\activate
 
-3. **Crie o arquivo requirements.txt**
--Flask
--psycopg2-binary
--Flask-Bcrypt
--python-dotenv
--Flask-Cors
+3. ### Crie o arquivo requirements.txt
+- Flask
+- psycopg2-binary
+- Flask-Bcrypt
+- python-dotenv
+- Flask-Cors
 
-4. **Instale as Dependências**
--pip install -r requirements.txt
+4. ### Instale as Dependências
+- pip install -r requirements.txt
 
-5. **Configure o Banco de Dados**
--Crie um banco chamado ecommerce_db
--Crie as tabelas produtos e usuarios (com a coluna estoque em produtos)
--Crie um arquivo .env no backend com:
--DATABASE_URL=postgresql://seu_usuario:sua_senha@localhost:5432/ecommerce_db
+5. ### Configure o Banco de Dados
+- Crie um banco chamado ecommerce_db
+- Crie as tabelas produtos e usuarios (com a coluna estoque em produtos)
+- Crie um arquivo .env no backend com:
+- DATABASE_URL=postgresql://seu_usuario:sua_senha@localhost:5432/ecommerce_db
 
-6. **Inicie o Servidor Flask**
--python app.py
+6. ### Inicie o Servidor Flask
+- python app.py
 
-7. **Acesse o Front-end**
--http://127.0.0.1:5000/
+7. ### Acesse o Front-end
+- http://127.0.0.1:5000/
